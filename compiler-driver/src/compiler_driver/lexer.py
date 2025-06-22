@@ -16,7 +16,7 @@ def lex(filePath):
         ('VOID', r'void\b'),
         ('RETURN', r'return\b'),
         ('CONST', r'[0-9]+\b'),
-        ('identifier', r'[a-zA-Z_]\w*\b'),
+        ('ID', r'[a-zA-Z_]\w*\b'),
         ('LPAREN', r'\('),
         ('RPAREN', r'\)'),
         ('LBRACE', r'\{'),
@@ -49,11 +49,17 @@ def lex(filePath):
         if kind == 'MISMATCH':
             print(f"Unexpected character: {value!r} at position {pos}", file=sys.stderr)
             sys.exit(1)
+        
+
+        if kind == 'COMMENT':
+            pos = match.end()
+            continue
 
         if kind != 'WHITESPACE':
             tokens.append((kind, value))
 
         pos = match.end()
+
     
     return tokens
 

@@ -2,7 +2,8 @@
 import argparse
 from pathlib import Path
 import sys
-from compiler_driver.lexer import lex  # use your existing lexer function
+from compiler_driver.lexer import lex 
+from compiler_driver.parser import parse
 
 def main():
     parser = argparse.ArgumentParser()
@@ -25,6 +26,8 @@ def main():
     if args.lex:
         # print tokens or do nothing
         return 0
+
+    parsed = parse(tokens) 
     if args.parse:
         return 0
     if args.codegen:
