@@ -1,0 +1,22 @@
+[project]
+name = "compiler-driver"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "maxai472",email = "maxaitken472@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "click (>=8.2.1,<9.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "compiler_driver", from = "src"}]
+
+[tool.poetry.scripts]
+myc = "compiler_driver.cli:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
